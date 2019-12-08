@@ -153,11 +153,28 @@ namespace SP
         //la fecha (con hora, minutos y segundos) y el total del precio del cajón en un nuevo renglón.
         private void btnPunto5_Click(object sender, EventArgs e)
         {
-            //Asociar manejador de eventos y crearlo en la clase Manejadora(de instancia).
-            Manejadora<Banana> man=new Manejadora<Banana>();
-            this.c_bananas._eventoPrecio += new Cajon<Banana>.EventoPrecio(man.manejadoraPrecioTotal);
-            this.c_bananas += new Banana("verde", 2, "argentina");
-            this.c_bananas += new Banana("amarilla", 4, "ecuador");
+            Manejadora<Banana> manejador = new Manejadora<Banana>();
+
+            Cajon<Banana>._eventoPrecio += new Cajon<Banana>.EventoPrecio(manejador.manejadoraPrecioTotal);
+
+            try
+            {
+                this.c_bananas += new Banana("verde", 2, "argentina");
+                this.c_bananas += new Banana("amarilla", 4, "ecuador");
+            }
+            catch(CajonLlenoException f)
+            {
+                MessageBox.Show(f.Message);
+            }
+
+            double p = this.c_bananas.PrecioTotal;
+
+            if(p>55)
+            {
+                Cajon<Banana>._eventoPrecio(c_bananas);
+            }
+
+            Cajon<Banana>._eventoPrecio -= new Cajon<Banana>.EventoPrecio(manejador.manejadoraPrecioTotal);
         }
 
         //Obtener de la base de datos (sp_lab_II) el listado de frutas:

@@ -27,7 +27,8 @@ namespace Entidades.SP
         protected List<T> _elementos;
         protected double _precioUnitario;        
         public delegate void EventoPrecio(Cajon<T> cajon);
-        public EventoPrecio _eventoPrecio;
+        [XmlIgnore]
+        public static EventoPrecio _eventoPrecio;
 
 
         public List<T> Elementos
@@ -97,7 +98,7 @@ namespace Entidades.SP
 
         public static Cajon<T> operator +(Cajon<T> c,T elemento)
         {
-            if(c.Elementos.Count<c._capacidad)
+            if(c._elementos.Count<c._capacidad)
             {
                 c.Elementos.Add(elemento);
             }
