@@ -33,11 +33,19 @@ namespace Entidades.SP
         public List<T> Elementos
         {
             get { return this._elementos; }
+            set { this._elementos = value; }
         }
 
         public double PrecioTotal
         {
             get { return this._capacidad * this._precioUnitario; }
+            set { this.PrecioTotal = value; }
+        }
+
+        public double PrecioUnitario
+        {
+            get { return this._precioUnitario; }
+            set { this._precioUnitario = value; }
         }
 
         public Cajon()

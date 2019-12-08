@@ -14,8 +14,8 @@ namespace Entidades.SP
     {
         protected string _provinciaOrigen;
 
-        public override string Color { get { return this._color; } set { this._color = value; } }
-        public override double Peso { get { return this._peso; } set { this._peso = value; } }
+        new public string Color { get { return this._color; } set { this._color = value; } }
+        new public double Peso { get { return this._peso; } set { this._peso = value; } }
         public string Provincia { get { return this._provinciaOrigen; } set { this._provinciaOrigen = value; } }
 
         public string Nombre
@@ -73,6 +73,11 @@ namespace Entidades.SP
         public Manzana(string color, double peso, string provincia) : base(color, peso)
         {
             this._provinciaOrigen = provincia;
+        }
+
+        public Manzana():base("roja",0)
+        {
+
         }
     }          
 }
