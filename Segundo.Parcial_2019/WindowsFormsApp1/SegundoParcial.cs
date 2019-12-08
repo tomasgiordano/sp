@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades.SP;
+using System.Data.SqlClient;
 
 namespace SP
 {
@@ -182,21 +183,21 @@ namespace SP
         //Invocar al método ObtenerListadoFrutas.
         private void btnPunto6_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(SegundoParcial.ObtenerListadoFrutas());
+            MessageBox.Show(SegundoParcial.ObtenerListadoFrutas());
         }
 
         //Agregar en la base de datos las frutas del formulario (_manzana, _banana y _durazno).
         //Invocar al metodo AgregarFrutas():bool
         private void btnPunto7_Click(object sender, EventArgs e)
         {
-            //if (SegundoParcial.AgregarFrutas(this))
-            //{
-            //    MessageBox.Show("Se agregaron las frutas a la Base de Datos");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("NO se agregaron las frutas a la Base de Datos");
-            //}
+            if (SegundoParcial.AgregarFrutas(this))
+            {
+                MessageBox.Show("Se agregaron las frutas a la Base de Datos");
+            }
+            else
+            {
+                MessageBox.Show("NO se agregaron las frutas a la Base de Datos");
+            }
         }
 
         //Agregar un método de extensión a la clase Cajon que:
@@ -232,13 +233,74 @@ namespace SP
 
         private static string ObtenerListadoFrutas()
         {
-            throw new NotImplementedException();
+            SqlConnection conector = new SqlConnection(Properties.Settings.Default.Conexion);
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader reader;
+            StringBuilder datosEnDB = new StringBuilder();
+
+            try
+            {
+                conector.Open();
+
+                comando.Connection = conector;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT TOP(1000)[id],[nombre],[peso],[precio]FROM[sp_lab_II].[dbo].[frutas]";
+
+                reader = comando.ExecuteReader();
+
+                while (reader.Read() != false)
+                {
+                    datosEnDB.AppendLine("Id: " + reader[0].ToString() + "| Nombre: " + reader[1].ToString() + "| Peso:" + reader[2] + "| Precio: " + reader[3]);
+                }
+
+            }
+            catch (Exception e)
+            {
+                datosEnDB.AppendLine("Error");
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                conector.Close();
+            }
+            return datosEnDB.ToString();
         }
 
         private static bool AgregarFrutas(SegundoParcial frm)
         {
-            throw new NotImplementedException();
+            bool seAgrego = false;
+            SqlConnection conector = new SqlConnection(Properties.Settings.Default.Conexion);
+            SqlCommand comando = new SqlCommand();
+
+            try
+            {
+                conector.Open();
+
+                comando.Connection = conector;
+                comando.CommandType = CommandType.Text;
+                StringBuilder unosComandos = new StringBuilder();
+
+                unosComandos.AppendLine("insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._manzana.Nombre + "', " + 12.9 + ", " + frm._manzana.Peso + ")");
+                unosComandos.AppendLine("insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._banana.Nombre + "', " + 13.6 + ", " + frm._banana.Peso + ")");
+                unosComandos.AppendLine("insert into [sp_lab_II].[dbo].[frutas]  values ('" + frm._durazno.Nombre + "', " + 14.8 + ", " + frm._durazno.Peso + ")");
+
+                comando.CommandText = unosComandos.ToString();
+
+                comando.ExecuteNonQuery();
+
+                seAgrego = true;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Error");
+            }
+            finally
+            {
+                conector.Close();
+            }
+            return seAgrego;
         }
+    }
 
     }
 }
