@@ -12,10 +12,15 @@ namespace Entidades.SP
     {
         protected int _cantPelusa;
 
+        public override string Color { get{ return this._color; } set{ this._color=value; } }
+        public override double Peso { get { return this._peso; } set { this._peso = value; } }
+
+        public int CantPelusa { get {return this._cantPelusa; } set {this._cantPelusa=value; } }
         public string Nombre
         {
             get { return "Durazno"; }
         }
+
 
         public override bool TieneCarozo
         {

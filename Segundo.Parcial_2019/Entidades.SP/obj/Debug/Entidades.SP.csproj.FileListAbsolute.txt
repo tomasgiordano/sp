@@ -4,3 +4,9 @@ C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\Entidades.SP\obj\
 C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\Entidades.SP\obj\Debug\Entidades.SP.csproj.CoreCompileInputs.cache
 C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\Entidades.SP\obj\Debug\Entidades.SP.dll
 C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\Entidades.SP\obj\Debug\Entidades.SP.pdb
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\Entidades.SP\bin\Debug\Entidades.SP.dll
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\Entidades.SP\bin\Debug\Entidades.SP.pdb
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\Entidades.SP\obj\Debug\Entidades.SP.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\Entidades.SP\obj\Debug\Entidades.SP.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\Entidades.SP\obj\Debug\Entidades.SP.dll
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\Entidades.SP\obj\Debug\Entidades.SP.pdb

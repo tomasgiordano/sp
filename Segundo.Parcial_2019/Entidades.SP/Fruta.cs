@@ -13,6 +13,18 @@ namespace Entidades.SP
         protected string _color;
         protected double _peso;
 
+        public abstract string Color
+        {
+            get;
+            set;
+        }
+
+        public abstract double Peso
+        {
+            get;
+            set;
+        }
+
         public abstract bool TieneCarozo
         {
             get;

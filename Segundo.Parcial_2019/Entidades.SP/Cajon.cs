@@ -25,7 +25,10 @@ namespace Entidades.SP
     {
         protected int _capacidad;
         protected List<T> _elementos;
-        protected double _precioUnitario;
+        protected double _precioUnitario;        
+        public delegate void EventoPrecio(Cajon<T> cajon);
+        public EventoPrecio _eventoPrecio;
+
 
         public List<T> Elementos
         {

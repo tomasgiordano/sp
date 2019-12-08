@@ -154,7 +154,8 @@ namespace SP
         private void btnPunto5_Click(object sender, EventArgs e)
         {
             //Asociar manejador de eventos y crearlo en la clase Manejadora(de instancia).
-
+            Manejadora<Banana> man=new Manejadora<Banana>();
+            this.c_bananas._eventoPrecio += new Cajon<Banana>.EventoPrecio(man.manejadoraPrecioTotal);
             this.c_bananas += new Banana("verde", 2, "argentina");
             this.c_bananas += new Banana("amarilla", 4, "ecuador");
         }

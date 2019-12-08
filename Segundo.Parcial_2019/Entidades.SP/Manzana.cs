@@ -14,6 +14,10 @@ namespace Entidades.SP
     {
         protected string _provinciaOrigen;
 
+        public override string Color { get { return this._color; } set { this._color = value; } }
+        public override double Peso { get { return this._peso; } set { this._peso = value; } }
+        public string Provincia { get { return this._provinciaOrigen; } set { this._provinciaOrigen = value; } }
+
         public string Nombre
         {
             get { return "Manzana"; }
@@ -35,7 +39,7 @@ namespace Entidades.SP
             try
             {
                 XmlSerializer ser = new XmlSerializer(typeof(Manzana));
-                using (StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + path))
+                using (StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + path))
                 {
                     ser.Serialize(sw, this);
                 }
@@ -54,7 +58,7 @@ namespace Entidades.SP
             try
             {
                 XmlSerializer ser = new XmlSerializer(typeof(Manzana));
-                using (StreamReader sr = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + path))
+                using (StreamReader sr = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + path))
                 {
                     f = (Manzana)ser.Deserialize(sr);
                 }

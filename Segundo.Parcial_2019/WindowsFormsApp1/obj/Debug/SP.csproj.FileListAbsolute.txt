@@ -21,3 +21,16 @@ C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\WindowsFormsApp1\
 C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.csproj.CopyComplete
 C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.exe
 C:\Users\pc\Desktop\2DO CUATRI\Apuntes sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.pdb
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\bin\Debug\SP.exe.config
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\bin\Debug\SP.exe
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\bin\Debug\SP.pdb
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\bin\Debug\Entidades.SP.dll
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\bin\Debug\Entidades.SP.pdb
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.SegundoParcial.resources
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.Properties.Resources.resources
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.csproj.CopyComplete
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.exe
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.pdb

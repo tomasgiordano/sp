@@ -47,6 +47,7 @@
     <Compile Include="Fruta.cs" />
     <Compile Include="IDeserializar.cs" />
     <Compile Include="ISerializar.cs" />
+    <Compile Include="Manejadora.cs" />
     <Compile Include="Manzana.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

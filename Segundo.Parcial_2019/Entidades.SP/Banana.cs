@@ -12,6 +12,9 @@ namespace Entidades.SP
     {
         protected string _paisOrigen;
 
+        public override string Color { get { return this._color; } set { this._color = value; } }
+        public override double Peso { get { return this._peso; } set { this._peso = value; } }
+
         public string Nombre
         {
             get { return "Banana"; }
