@@ -210,24 +210,24 @@ namespace SP
         private void btnPunto8_Click(object sender, EventArgs e)
         {
             //implementar manejo de excepciones
-            //if (this.c_manzanas.EliminarFruta(1))
-            //{
-            //    MessageBox.Show("Se ha eliminado la fruta de la base de datos");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No se ha eliminado la fruta de la base de datos");
-            //}
+            if (this.c_manzanas.EliminarFruta(1))
+            {
+                MessageBox.Show("Se ha eliminado la fruta de la base de datos");
+            }
+            else
+            {
+                MessageBox.Show("No se ha eliminado la fruta de la base de datos");
+            }
 
-            ////implementar manejo de excepciones
-            //if (this.c_manzanas.EliminarFruta(1))
-            //{
-            //    MessageBox.Show("Se ha eliminado la fruta de la base de datos");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No se ha eliminado la fruta de la base de datos");
-            //}
+            //implementar manejo de excepciones
+            if (this.c_manzanas.EliminarFruta(1))
+            {
+                MessageBox.Show("Se ha eliminado la fruta de la base de datos");
+            }
+            else
+            {
+                MessageBox.Show("No se ha eliminado la fruta de la base de datos");
+            }
 
         }
 
@@ -302,5 +302,5 @@ namespace SP
         }
     }
 
-    }
+    
 }
