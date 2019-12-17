@@ -156,7 +156,7 @@ namespace SP
         {
             Manejadora<Banana> manejador = new Manejadora<Banana>();
 
-            Cajon<Banana>._eventoPrecio += new Cajon<Banana>.EventoPrecio(manejador.manejadoraPrecioTotal);
+            Cajon<Banana>._eventoPrecio += manejador.manejadoraPrecioTotal;
 
             try
             {
@@ -175,7 +175,7 @@ namespace SP
                 Cajon<Banana>._eventoPrecio(c_bananas);
             }
 
-            Cajon<Banana>._eventoPrecio -= new Cajon<Banana>.EventoPrecio(manejador.manejadoraPrecioTotal);
+            Cajon<Banana>._eventoPrecio -= manejador.manejadoraPrecioTotal;
         }
 
         //Obtener de la base de datos (sp_lab_II) el listado de frutas:
