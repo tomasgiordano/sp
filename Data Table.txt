@@ -1,0 +1,25 @@
+DATA TABLE
+
+---------------------
+Inicializar dataTable
+---------------------
+1- DataTable dt = new DataTable("nombre_tabla");
+
+------------------------------
+Agregar elementos al dataTable
+------------------------------
+1- DataRow Fila = dt.NewRow();
+2- Fila[1]=lapiz.marca;
+   Fila[2]=lapiz.precio;
+   Fila[3]="lapiz";
+3- dt.Rows.Add(fila);
+
+-----------------------------------
+Borrar primer registro de dataTable
+-----------------------------------
+1- dt.Rows[0].Delete();
+
+-----------------------------------------
+Modificar el ultimo registro de dataTable
+-----------------------------------------
+1- dt.Rows[dt.Rows.Count - 1]["marca"] = "NuevaMarca";
