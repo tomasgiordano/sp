@@ -43,7 +43,7 @@ namespace WindowsForms.SP
 
         private void SegundoParcial_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Apellido y nombre del alumno...");
+            MessageBox.Show("Giordano Tomas 2A");
         }
 
         //Crear la siguiente jerarquía de clases:
@@ -131,7 +131,7 @@ namespace WindowsForms.SP
         private void btnPunto4_Click(object sender, EventArgs e)
         {
             //Asociar manejador de eventos (c_gomas_EventoPrecio) aquí
-            this.c_gomas.EventoPrecio += new Cartuchera<Goma>.DelegadoEventoPrecio(this.c_gomas_EventoPrecio);
+            this.c_gomas.EventoPrecio += c_gomas_EventoPrecio;
             this.c_gomas += new Goma(false, "Faber-Castell", 31);
         }
 
@@ -166,7 +166,7 @@ namespace WindowsForms.SP
 
             DialogResult rta = this.openFileDialog1.ShowDialog();//Reemplazar por la llamada al método correspondiente del OpenFileDialog
 
-            if (rta == System.Windows.Forms.DialogResult.OK)
+            if (rta == DialogResult.OK)
             {
                 //leer el archivo seleccionado por el cliente y mostrarlo en txtVisorTickest
                 try
@@ -228,7 +228,6 @@ namespace WindowsForms.SP
                 this.da = new SqlDataAdapter(comando, this.cn);  //parametros: comando y conexion
 
                 this.da.Fill(this.dt);
-                this.da.SelectCommand = new SqlCommand(comando, this.cn);
                 this.dataGridView1.DataSource = this.dt;
             }
 
@@ -271,11 +270,10 @@ namespace WindowsForms.SP
                 this.da.DeleteCommand = new SqlCommand("DELETE FROM [sp_lab_II_utiles].[dbo].[utiles] WHERE id = @p1", this.cn);
 
                 this.da.DeleteCommand.Parameters.Add("@p1", SqlDbType.Int, 10, "id");
+
                 //Borrar el primer registro del dataTable
 
-                DataRow fila = this.dt.Rows[0];
-                fila.Delete();
-
+                dt.Rows[0].Delete();
             }
 
             //Modificar del dataTable el ultimo registro, cambiarlo por: marca:barrilito; precio:72
@@ -290,14 +288,18 @@ namespace WindowsForms.SP
                 this.da.UpdateCommand.Parameters.Add("@p1", SqlDbType.VarChar, 50, "tipo");
 
                 //Modificar el ultimo registro del dataTable
-                DataRow fila = this.dt.Rows[this.dt.Rows.Count - 1];
 
-                fila[1] = "barrilito";
-                fila[2] = 72;
+                this.dt.Rows[this.dt.Rows.Count - 1]["marca"] = "barrilito";
+                this.dt.Rows[this.dt.Rows.Count - 1]["precio"] = 72;
+
+                //DataRow fila = this.dt.Rows[this.dt.Rows.Count - 1];
+
+                //fila[1] = "barrilito";
+                //fila[2] = 72;
             }
 
-            //Sincronizar los cambios (sufridos en el dataTable) con la base de datos
-            private void btnPunto10_Click(object sender, EventArgs e)
+        //Sincronizar los cambios (sufridos en el dataTable) con la base de datos
+        private void btnPunto10_Click(object sender, EventArgs e)
             {
                 try
                 {
