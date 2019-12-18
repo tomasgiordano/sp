@@ -26,6 +26,8 @@ namespace WindowsForms.SP.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TOMASGIORDANO\\SQLEXPRESS;Initial Catalog=sp_lab_2_utiles;Integrated S" +
+            "ecurity=True")]
         public string Conexion {
             get {
                 return ((string)(this["Conexion"]));

@@ -1,7 +1,6 @@
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\Entidades\bin\Debug\Entidades.dll.config
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\Entidades\bin\Debug\Entidades.dll
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\Entidades\bin\Debug\Entidades.pdb
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.dll
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.pdb
+C:\Users\pc\Desktop\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\SP.LabII - Alumnos\Entidades\bin\Debug\Entidades.dll
+C:\Users\pc\Desktop\SP.LabII - Alumnos\Entidades\bin\Debug\Entidades.pdb
+C:\Users\pc\Desktop\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.dll
+C:\Users\pc\Desktop\SP.LabII - Alumnos\Entidades\obj\Debug\Entidades.pdb

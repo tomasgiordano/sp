@@ -4,32 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System.Windows.Forms;
 
 namespace Entidades
 {
     public class Ticketeadora
     {
-        public static bool ImprimirTicket(Cartuchera<Goma> cartuchera)
+        public static bool ImprimirTicket(Cartuchera<Goma> c)
         {
-            bool sePudo = false;
-
+            bool aux = false;
             try
             {
-                using (StreamWriter escritor = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tickets.log", true))
+                using (StreamWriter writer = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + "tickets.log", true))
                 {
-                    escritor.WriteLine(DateTime.Now);
-                    escritor.WriteLine("Precio total de la cartuchera: $" + cartuchera.PrecioTotal);
-                    MessageBox.Show("Se supero el precio. Archivo escrito con exito.");
-                    sePudo = true;
+                    writer.WriteLine(DateTime.Now);
+                    writer.WriteLine(c.PrecioTotal);
+                    aux = true;
                 }
             }
-            catch (Exception error)
+            catch (Exception)
             {
-                MessageBox.Show(error.Message, "Error al escribir en el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            return sePudo;
+            }
+            return aux;
         }
     }
 }

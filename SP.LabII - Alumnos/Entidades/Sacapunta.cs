@@ -6,33 +6,27 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Sacapunta : Utiles
+    public class Sacapunta:Utiles
     {
         public bool deMetal;
 
         public override bool PreciosCuidados
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
-        public Sacapunta(bool deMetal, double precio, string marca)
-            : base(marca, precio)
+        public Sacapunta(bool deMetal,double precio,string marca) : base(marca, precio)
         {
             this.deMetal = deMetal;
+        }
+        public Sacapunta() : base("SinMarca", 0)
+        {
+
         }
 
         public override string ToString()
         {
-            StringBuilder datos = new StringBuilder();
-
-            datos.Append(base.ToString());
-            datos.AppendLine("De metal: " + this.deMetal);
-            datos.AppendLine("Precios Cuidados: " + this.PreciosCuidados);
-
-            return datos.ToString();
+            return base.ToString() + " " + this.deMetal;
         }
     }
 }

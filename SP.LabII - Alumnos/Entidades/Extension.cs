@@ -10,7 +10,7 @@ namespace Entidades
     {
         public static string InformarNovedad(this CartucheraLlenaException c)
         {
-            return "Cartuchera llena";
+            return "Cartuchera llena.";
         }
     }
 }

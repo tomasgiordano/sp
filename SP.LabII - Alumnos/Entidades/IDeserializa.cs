@@ -8,6 +8,6 @@ namespace Entidades
 {
     public interface IDeserializa
     {
-        bool Xml(out Lapiz lapiz);
+        bool Xml(out Lapiz l);
     }
 }

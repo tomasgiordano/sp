@@ -6,33 +6,27 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Goma : Utiles
+    public class Goma:Utiles
     {
         public bool soloLapiz;
 
         public override bool PreciosCuidados
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
-        public Goma(bool soloLapiz, string marca, double precio)
-            : base(marca, precio)
+        public Goma(bool soloLapiz,string marca, double precio) : base(marca, precio)
         {
             this.soloLapiz = soloLapiz;
+        }
+        public Goma() : base("SinMarca", 0)
+        {
+
         }
 
         public override string ToString()
         {
-            StringBuilder datos = new StringBuilder();
-
-            datos.Append(base.ToString());
-            datos.AppendLine("Solo lapiz: " + this.soloLapiz);
-            datos.AppendLine("Precios Cuidados: " + this.PreciosCuidados);
-
-            return datos.ToString();
+            return base.ToString() + " " + this.soloLapiz;
         }
     }
 }

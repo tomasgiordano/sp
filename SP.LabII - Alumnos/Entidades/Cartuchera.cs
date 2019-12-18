@@ -10,30 +10,24 @@ namespace Entidades
     {
         protected int capacidad;
         protected List<T> elementos;
-
-        public delegate void DelegadoEventoPrecio(object sender, EventArgs e);
-        public event DelegadoEventoPrecio EventoPrecio;
+        public delegate void EventoPrecio(object sender, EventArgs e);
+        public event EventoPrecio eventoPrecio;
 
         public List<T> Elementos
         {
-            get
-            {
-                return this.elementos;
-            }
+            get { return this.elementos; }
         }
 
-        public double PrecioTotal
+        public float PrecioTotal
         {
             get
             {
-                double precioTotal = 0;
-
-                foreach (T elemento in this.Elementos)
+                float acumulador = 0;
+                foreach(T elemento in this.Elementos)
                 {
-                    precioTotal += elemento.precio;
+                    acumulador= (float)(acumulador + elemento.precio);
                 }
-
-                return precioTotal;
+                return acumulador;
             }
         }
 
@@ -42,47 +36,46 @@ namespace Entidades
             this.elementos = new List<T>();
         }
 
-        public Cartuchera(int capacidad)
-            : this()
+        public Cartuchera(int capacidad):this()
         {
             this.capacidad = capacidad;
         }
 
         public override string ToString()
         {
-            StringBuilder datos = new StringBuilder();
-
-            datos.AppendLine("Capacidad: " + this.capacidad);
-            datos.AppendLine("Cantidad de elementos: " + this.Elementos.Count);
-            datos.AppendLine("Precio total: " + this.PrecioTotal);
-            datos.AppendLine("Elementos en la cartuchera: ");
-            foreach (Utiles util in this.Elementos)
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("TIPO: "+(typeof(T)).ToString());
+            sb.AppendLine("CAPACIDAD: "+this.capacidad);
+            sb.AppendLine("CANT ELEMENTOS: "+this.Elementos.Count);
+            sb.AppendLine("PRECIO TOTAL: $"+this.PrecioTotal);
+            sb.AppendLine("*****************LISTA*****************");
+            foreach(T elemento in this.Elementos)
             {
-                datos.AppendLine(util.ToString());
+                sb.AppendLine(elemento.ToString());
             }
-
-            return datos.ToString();
+            return sb.ToString();
         }
 
-        public static Cartuchera<T> operator +(Cartuchera<T> cartuchera, T util)
+        public static Cartuchera<T> operator +(Cartuchera<T> c,T elemento)
         {
-            if (cartuchera.capacidad > cartuchera.Elementos.Count)
+            if(c.Elementos.Count<c.capacidad)
             {
-                cartuchera.Elementos.Add(util);
-                if (cartuchera is Cartuchera<Goma>)
-                {
-                    if (cartuchera.PrecioTotal > 85)
-                    {
-                        cartuchera.EventoPrecio(cartuchera, new EventArgs());
-                    }
-                }
+                c.Elementos.Add(elemento);
             }
             else
             {
                 throw new CartucheraLlenaException();
             }
 
-            return cartuchera;
+            if (c is Cartuchera<Goma>)
+            {
+                if (c.PrecioTotal > 85)
+                {
+                    c.eventoPrecio(c, new EventArgs());
+                }
+            }
+
+            return c;
         }
     }
 }

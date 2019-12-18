@@ -18,13 +18,13 @@ namespace Entidades
 
         public Utiles(string marca,double precio)
         {
-            this.precio = precio;
             this.marca = marca;
+            this.precio = precio;
         }
 
         protected virtual string UtilesToString()
         {
-            return this.marca + " " + this.precio.ToString(); 
+            return this.marca + " " + this.precio;
         }
 
         public override string ToString()

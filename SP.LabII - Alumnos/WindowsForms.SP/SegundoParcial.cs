@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Entidades;
-using System.Data.SqlClient;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace WindowsForms.SP
 {
     public partial class SegundoParcial : Form
     {
         private Lapiz lapiz;
-        private Goma goma;
+        private Goma  goma;
         private Sacapunta sacapunta;
 
         private Cartuchera<Utiles> c_utiles;
@@ -30,7 +30,7 @@ namespace WindowsForms.SP
         {
             InitializeComponent();
 
-            this.dt = new DataTable("utiles");
+            this.dt = new DataTable("utiles1");
             this.dt.Columns.Add("id", typeof(int));
             this.dt.Columns["id"].AutoIncrement = true;
             this.dt.Columns["id"].AutoIncrementSeed = 1;
@@ -43,7 +43,7 @@ namespace WindowsForms.SP
 
         private void SegundoParcial_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Giordano Tomas 2A");
+            MessageBox.Show("Giordano Tomas");
         }
 
         //Crear la siguiente jerarquía de clases:
@@ -117,7 +117,7 @@ namespace WindowsForms.SP
                 //Agregar, para la clase CartucheraLlenaException, un método de extensión (InformarNovedad():string)
                 //que retorne el mensaje de error
                 MessageBox.Show(ex.InformarNovedad());
-            }
+            }            
         }
 
         //Si el precio total de la cartuchera supera los 85 pesos, se disparará el evento EventoPrecio. 
@@ -126,18 +126,18 @@ namespace WindowsForms.SP
         //Crear el manejador necesario para que, una vez capturado el evento, se imprima en un archivo de texto: 
         //la fecha (con hora, minutos y segundos) y el total de la cartuchera (en un nuevo renglón). 
         //Se deben acumular los mensajes. El archivo se guardará con el nombre tickets.log en la carpeta 'Mis documentos' del cliente.
-        //El manejador de eventos (c_gomas_EventoPrecio) invocará al método (de clase) 
+        //El manejador de eventos (c_gomas_EventoPrecio) invocará al método (de clase)
         //ImprimirTicket (se alojará en la clase Ticketeadora), que retorna un booleano indicando si se pudo escribir o no
         private void btnPunto4_Click(object sender, EventArgs e)
         {
-            //Asociar manejador de eventos (c_gomas_EventoPrecio) aquí
-            this.c_gomas.EventoPrecio += c_gomas_EventoPrecio;
+            //Asociar manejador de eventos (c_gomas_EventoPrecio) aquí            
+            c_gomas.eventoPrecio += c_gomas_EventoPrecio;
             this.c_gomas += new Goma(false, "Faber-Castell", 31);
         }
 
         private void c_gomas_EventoPrecio(object sender, EventArgs e)
         {
-            bool todoOK = Ticketeadora.ImprimirTicket(this.c_gomas);//Reemplazar por la llamada al método de clase ImprimirTicket
+            bool todoOK = Ticketeadora.ImprimirTicket(c_gomas);//Reemplazar por la llamada al método de clase ImprimirTicket
 
             if (todoOK)
             {
@@ -157,21 +157,20 @@ namespace WindowsForms.SP
             //tipo de archivo (filtro) -> .log
             //extensión por defecto -> .log
             //nombre de archovo (defecto) -> tickets
+            openFileDialog1.Title = "Abrir archivo de tickets";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            openFileDialog1.Filter = "Archivos .log | *.log";
+            openFileDialog1.DefaultExt = ".log";
+            openFileDialog1.FileName = "tickets";
 
-            this.openFileDialog1.Title = "Abrir archivo de tickets";
-            this.openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            this.openFileDialog1.Filter = "Archivos .log | *.log";
-            this.openFileDialog1.DefaultExt = "log";
-            this.openFileDialog1.FileName = "tickets";
-
-            DialogResult rta = this.openFileDialog1.ShowDialog();//Reemplazar por la llamada al método correspondiente del OpenFileDialog
+            DialogResult rta = openFileDialog1.ShowDialog();//Reemplazar por la llamada al método correspondiente del OpenFileDialog
 
             if (rta == DialogResult.OK)
             {
                 //leer el archivo seleccionado por el cliente y mostrarlo en txtVisorTickest
                 try
                 {
-                    using (StreamReader lector = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\tickets.log"))
+                    using (StreamReader lector = new StreamReader(this.openFileDialog1.OpenFile()))
                     {
                         this.txtVisorTickets.Text = lector.ReadToEnd();
                     }
@@ -181,137 +180,130 @@ namespace WindowsForms.SP
                     MessageBox.Show(error.Message, "Error al leer el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
-            //Crear las interfaces: 
-            //#.-ISerializa -> Xml() : bool
-            //              -> Path{ get; } : string
-            //#.-IDeserializa -> Xml(out Lapiz) : bool
-            //Implementar (implícitamente) ISerializa lápiz
-            //Implementar (explícitamente) IDeserializa en lápiz
-            //El archivo .xml guardarlo en el escritorio del cliente con el nombre formado con su apellido.nombre.lapiz.xml
-            //Ejemplo: Alumno Juan Pérez -> perez.juan.lapiz.xml
-            private void btnPunto5_Click(object sender, EventArgs e)
+        //Crear las interfaces: 
+        //#.-ISerializa -> Xml() : bool
+        //              -> Path{ get; } : string
+        //#.-IDeserializa -> Xml(out Lapiz) : bool
+        //Implementar (implícitamente) ISerializa lápiz
+        //Implementar (explícitamente) IDeserializa en lápiz
+        //El archivo .xml guardarlo en el escritorio del cliente con el nombre formado con su apellido.nombre.lapiz.xml
+        //Ejemplo: Alumno Juan Pérez -> perez.juan.lapiz.xml
+        private void btnPunto5_Click(object sender, EventArgs e)
+        {
+            Lapiz aux = null;
+
+            if (this.lapiz.Xml())
             {
-                Lapiz aux = null;
-
-                if (this.lapiz.Xml())
-                {
-                    MessageBox.Show("Lápiz serializado OK");
-                }
-                else
-                {
-                    MessageBox.Show("Lápiz NO serializado");
-                }
-
-                if (((IDeserializa)this.lapiz).Xml(out aux))
-                {
-                    MessageBox.Show("Lápiz deserializado OK");
-                    MessageBox.Show(aux.ToString());
-                }
-                else
-                {
-                    MessageBox.Show("Lápiz NO deserializado");
-                }
+                MessageBox.Show("Lápiz serializado OK");
+            }
+            else
+            {
+                MessageBox.Show("Lápiz NO serializado");
             }
 
-            //Obtener de la base de datos (sp_lab_II_utiles) el listado de útiles:
-            //Tabla - utiles { id(autoincremental - numérico) - marca(cadena) - precio(numérico) - tipo(cadena) }.
-            private void btnPunto6_Click(object sender, EventArgs e)
+            if (((IDeserializa)this.lapiz).Xml(out aux))
             {
-                ///Configurar el SqlConnection
-                this.cn = new SqlConnection(Properties.Settings.Default.Conexion);
-
-                //Configurar el SqlDataAdapter (y su selectCommand)
-                string comando = "SELECT * FROM [sp_lab_II_utiles].[dbo].[utiles]";
-                this.da = new SqlDataAdapter(comando, this.cn);  //parametros: comando y conexion
-
-                this.da.Fill(this.dt);
-                this.dataGridView1.DataSource = this.dt;
+                MessageBox.Show("Lápiz deserializado OK");
+                MessageBox.Show(aux.ToString());
             }
+            else
+            {
+                MessageBox.Show("Lápiz NO deserializado");
+            }
+        }
+
+        //Obtener de la base de datos (sp_lab_II_utiles) el listado de útiles:
+        //Tabla - utiles { id(autoincremental - numérico) - marca(cadena) - precio(numérico) - tipo(cadena) }.
+        private void btnPunto6_Click(object sender, EventArgs e)
+        {
+            //Configurar el SqlConnection
+            try
+            {
+                cn = new SqlConnection(Properties.Settings.Default.Conexion);
+                string comando = "SELECT * FROM [sp_lab_2_utiles].[dbo].[utiles1]";
+                da = new SqlDataAdapter(comando, cn);
+            }
+            catch(Exception f)
+            {
+                MessageBox.Show(f.Message);
+            }
+            
+            //Configurar el SqlDataAdapter (y su selectCommand)                        
+
+            this.da.Fill(this.dt);
+            this.dataGridView1.DataSource = this.dt;
+        }
 
         //Agregar en el dataTable los útiles del formulario (lapiz, goma y sacapunta).
         private void btnPunto7_Click(object sender, EventArgs e)
         {
             //Configurar el insertCommand del SqlDataAdapter y sus parametros
-            string comando = "INSERT INTO [sp_lab_II_utiles].[dbo].[utiles] VALUES(@p1, @p2, @p3)";
-            this.da.InsertCommand = new SqlCommand(comando, this.cn);
-
-            this.da.InsertCommand.Parameters.Add("@p1", SqlDbType.VarChar, 50, "marca");
-            this.da.InsertCommand.Parameters.Add("@p2", SqlDbType.Float, 10, "precio");
-            this.da.InsertCommand.Parameters.Add("@p3", SqlDbType.VarChar, 50, "tipo");
+            string comando = "INSERT INTO [sp_lab_2_utiles].[dbo].[utiles1] VALUES (@p1,@p2,@p3)";
+            da.InsertCommand = new SqlCommand(comando, cn);
+            da.InsertCommand.Parameters.Add("@p1", SqlDbType.VarChar, 50, "marca");
+            da.InsertCommand.Parameters.Add("@p2", SqlDbType.Float, 10, "precio");
+            da.InsertCommand.Parameters.Add("@p3", SqlDbType.VarChar, 50, "tipo");
 
             //Agregar los utiles del formulario al dataTable
-            DataRow fila = this.dt.NewRow();
+            DataRow Fila = dt.NewRow();
+            Fila[1] = lapiz.marca;
+            Fila[2] = lapiz.precio;
+            Fila[3] = "lapiz";
+            dt.Rows.Add(Fila);
 
-            fila[1] = this.lapiz.marca;
-            fila[2] = this.lapiz.precio;
-            fila[3] = "lapiz";
-            this.dt.Rows.Add(fila);
+            Fila = dt.NewRow();
+            Fila[1] = goma.marca;
+            Fila[2] = goma.precio;
+            Fila[3] = "goma";
+            dt.Rows.Add(Fila);
 
-            fila = this.dt.NewRow();
-            fila[1] = this.goma.marca;
-            fila[2] = this.goma.precio;
-            fila[3] = "goma";
-            this.dt.Rows.Add(fila);
-
-            fila = this.dt.NewRow();
-            fila[1] = this.sacapunta.marca;
-            fila[2] = this.sacapunta.precio;
-            fila[3] = "sacapunta";
-            this.dt.Rows.Add(fila);
+            Fila = dt.NewRow();
+            Fila[1] = sacapunta.marca;
+            Fila[2] = sacapunta.precio;
+            Fila[3] = "sacapunta";
+            dt.Rows.Add(Fila);
         }
 
-            //Eliminar del dataTable el primer registro
-            private void btnPunto8_Click(object sender, EventArgs e)
-            {
-                //Configurar el deleteCommand del SqlDataAdapter y sus parametros
-                this.da.DeleteCommand = new SqlCommand("DELETE FROM [sp_lab_II_utiles].[dbo].[utiles] WHERE id = @p1", this.cn);
+        //Eliminar del dataTable el primer registro
+        private void btnPunto8_Click(object sender, EventArgs e)
+        {
+            //Configurar el deleteCommand del SqlDataAdapter y sus parametros
+            da.DeleteCommand = new SqlCommand("DELETE FROM [sp_lab_2_utiles].[dbo].[utiles1] where id = @p1", cn);
+            da.DeleteCommand.Parameters.Add("@p1", SqlDbType.Int, 10, "id");
+            //Borrar el primer registro del dataTable
+            dt.Rows[0].Delete();
+        }
 
-                this.da.DeleteCommand.Parameters.Add("@p1", SqlDbType.Int, 10, "id");
-
-                //Borrar el primer registro del dataTable
-
-                dt.Rows[0].Delete();
-            }
-
-            //Modificar del dataTable el ultimo registro, cambiarlo por: marca:barrilito; precio:72
-            private void btnPunto9_Click(object sender, EventArgs e)
-            {
-                //Configurar el updateCommand del SqlDataAdapter y sus parametros
-                string comando = "UPDATE [sp_lab_II_utiles].[dbo].[utiles] SET marca = @p1, precio = @p2, tipo = @p3";
-                this.da.UpdateCommand = new SqlCommand(comando, this.cn);
-
-                this.da.UpdateCommand.Parameters.Add("@p1", SqlDbType.VarChar, 50, "marca");
-                this.da.UpdateCommand.Parameters.Add("@p2", SqlDbType.Float, 10, "precio");
-                this.da.UpdateCommand.Parameters.Add("@p1", SqlDbType.VarChar, 50, "tipo");
-
-                //Modificar el ultimo registro del dataTable
-
-                this.dt.Rows[this.dt.Rows.Count - 1]["marca"] = "barrilito";
-                this.dt.Rows[this.dt.Rows.Count - 1]["precio"] = 72;
-
-                //DataRow fila = this.dt.Rows[this.dt.Rows.Count - 1];
-
-                //fila[1] = "barrilito";
-                //fila[2] = 72;
-            }
+        //Modificar del dataTable el ultimo registro, cambiarlo por: marca:barrilito; precio:72
+        private void btnPunto9_Click(object sender, EventArgs e)
+        {
+            //Configurar el updateCommand del SqlDataAdapter y sus parametros
+            string comando = "UPDATE [sp_lab_2_utiles].[dbo].[utiles1] SET marca=@p1,precio=@p2,tipo=@p3 where id = @p4";
+            da.UpdateCommand = new SqlCommand(comando, cn);
+            da.UpdateCommand.Parameters.Add("@p1", SqlDbType.VarChar, 50, "marca");
+            da.UpdateCommand.Parameters.Add("@p2", SqlDbType.Float, 10, "precio");
+            da.UpdateCommand.Parameters.Add("@p3", SqlDbType.VarChar, 50, "tipo");
+            da.UpdateCommand.Parameters.Add("@p4", SqlDbType.Int, 10, "id");
+            //Modificar el ultimo registro del dataTable
+            dt.Rows[dt.Rows.Count - 1] ["marca"] = "barrilito";
+            dt.Rows[dt.Rows.Count - 1] ["precio"] = 72;
+        }
 
         //Sincronizar los cambios (sufridos en el dataTable) con la base de datos
         private void btnPunto10_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    //Sincronizar el SqlDataAdapter con la BD
-                    this.da.Update(this.dt);
-                    MessageBox.Show("Datos sincronizados!!!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se ha sincronizado!!!\n" + ex.Message);
-                }
+                //Sincronizar el SqlDataAdapter con la BD
+                this.da.Update(this.dt);
+                MessageBox.Show("Datos sincronizados!!!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha sincronizado!!!\n" + ex.Message);
             }
         }
     }
-
+}

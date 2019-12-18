@@ -148,9 +148,9 @@ namespace SP
 
         }
 
-        //Si el precio total del cajon supera los 55 pesos, se disparará el evento EventoPrecio. 
-        //Diseñarlo (de acuerdo a las convenciones vistas) en la clase cajon. 
-        //Crear el manejador necesario para que se imprima en un archivo de texto: 
+        //Si el precio total del cajon supera los 55 pesos, se disparará el evento EventoPrecio.
+        //Diseñarlo (de acuerdo a las convenciones vistas) en la clase cajon.
+        //Crear el manejador necesario para que se imprima en un archivo de texto:
         //la fecha (con hora, minutos y segundos) y el total del precio del cajón en un nuevo renglón.
         private void btnPunto5_Click(object sender, EventArgs e)
         {
@@ -218,17 +218,7 @@ namespace SP
             {
                 MessageBox.Show("No se ha eliminado la fruta de la base de datos");
             }
-
-            //implementar manejo de excepciones
-            if (this.c_manzanas.EliminarFruta(1))
-            {
-                MessageBox.Show("Se ha eliminado la fruta de la base de datos");
-            }
-            else
-            {
-                MessageBox.Show("No se ha eliminado la fruta de la base de datos");
-            }
-
+            
         }
 
         private static string ObtenerListadoFrutas()
@@ -236,7 +226,7 @@ namespace SP
             SqlConnection conector = new SqlConnection(Properties.Settings.Default.Conexion);
             SqlCommand comando = new SqlCommand();
             SqlDataReader reader;
-            StringBuilder datosEnDB = new StringBuilder();
+            string retorno="";
 
             try
             {
@@ -250,20 +240,20 @@ namespace SP
 
                 while (reader.Read() != false)
                 {
-                    datosEnDB.AppendLine("Id: " + reader[0].ToString() + "| Nombre: " + reader[1].ToString() + "| Peso:" + reader[2] + "| Precio: " + reader[3]);
+                    retorno += String.Format("{0} {1} {2}\n", reader["nombre"].ToString(), reader["peso"].ToString(), reader["precio"].ToString());
                 }
 
             }
             catch (Exception e)
             {
-                datosEnDB.AppendLine("Error");
+                retorno += "\nError";
                 MessageBox.Show(e.Message);
             }
             finally
             {
                 conector.Close();
             }
-            return datosEnDB.ToString();
+            return retorno;
         }
 
         private static bool AgregarFrutas(SegundoParcial frm)
@@ -278,13 +268,13 @@ namespace SP
 
                 comando.Connection = conector;
                 comando.CommandType = CommandType.Text;
-                StringBuilder unosComandos = new StringBuilder();
+                StringBuilder comandos = new StringBuilder();
 
-                unosComandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture,"insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._manzana.Nombre + "', " + 12.9 + ", " + frm._manzana.Peso + ")\n");
-                unosComandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._banana.Nombre + "', " + 13.6 + ", " + frm._banana.Peso + ")\n");
-                unosComandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "insert into [sp_lab_II].[dbo].[frutas]  values ('" + frm._durazno.Nombre + "', " + 14.8 + ", " + frm._durazno.Peso + ")\n");
+                comandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture,"insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._manzana.Nombre + "', " + 12.9 + ", " + frm._manzana.Peso + ")\n");
+                comandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._banana.Nombre + "', " + 13.6 + ", " + frm._banana.Peso + ")\n");
+                comandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "insert into [sp_lab_II].[dbo].[frutas]  values ('" + frm._durazno.Nombre + "', " + 14.8 + ", " + frm._durazno.Peso + ")\n");
 
-                comando.CommandText = unosComandos.ToString();
+                comando.CommandText = comandos.ToString();
 
                 comando.ExecuteNonQuery();
 

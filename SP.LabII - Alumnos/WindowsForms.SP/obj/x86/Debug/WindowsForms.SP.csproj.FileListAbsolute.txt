@@ -10,17 +10,16 @@ c:\users\administrador\documents\visual studio 2010\Projects\SP.LabII\WindowsFor
 c:\users\administrador\documents\visual studio 2010\Projects\SP.LabII\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.pdb
 C:\Users\Administrador\Documents\Visual Studio 2010\Projects\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.exe
 C:\Users\Administrador\Documents\Visual Studio 2010\Projects\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.pdb
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csprojAssemblyReference.cache
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.SegundoParcial.resources
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.Properties.Resources.resources
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csproj.GenerateResource.cache
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csproj.CoreCompileInputs.cache
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.exe
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.pdb
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\WindowsForms.SP.exe.config
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\WindowsForms.SP.exe
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\WindowsForms.SP.pdb
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\Entidades.dll
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\Entidades.pdb
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\Entidades.dll.config
-C:\Users\pc\Desktop\2DO CUATRI\sp\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csproj.CopyComplete
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.SegundoParcial.resources
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.Properties.Resources.resources
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.exe
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.pdb
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\WindowsForms.SP.exe.config
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\WindowsForms.SP.exe
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\WindowsForms.SP.pdb
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\Entidades.dll
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\bin\Debug\Entidades.pdb
+C:\Users\pc\Desktop\SP.LabII - Alumnos\WindowsForms.SP\obj\x86\Debug\WindowsForms.SP.csproj.CopyComplete

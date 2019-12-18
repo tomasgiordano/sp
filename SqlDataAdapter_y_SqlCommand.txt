@@ -27,7 +27,7 @@
 Select
 ----------------------------------------------------------------------------
 
-	    ///Adaptar el reader para la situacion
+///Adaptar el reader para la situacion
 	    string retorno = "";
 	    using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
             {
@@ -67,7 +67,7 @@ Insert
                 }
                 catch (Exception error)
                 {
-                    MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(error.Message, "Error al Insertar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
 
@@ -87,7 +87,7 @@ Update
 		}
 		catch (Exception error)
             	{
-               		MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               		MessageBox.Show(error.Message, "Error al Actualizar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             	}
 	}
 
@@ -107,7 +107,7 @@ Delete
 		}
 		catch (Exception error)
             	{
-                	MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                	MessageBox.Show(error.Message, "Error al Eliminar",MessageBoxButtons.OK,MessageBoxIcon.Error);
             	}
 	}
 
