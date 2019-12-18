@@ -38,7 +38,7 @@ Borrar el primer registro del dataTable
 ----------------------------------------------
 Configurar el updateCommand del SqlDataAdapter
 ----------------------------------------------
-1_  string comando = "UPDATE [nombre_base].[dbo].[nombre_tabla] SET marca=@p1,precio=@p2,tipo=@p3";
+1_  string comando = "UPDATE [nombre_base].[dbo].[nombre_tabla] SET marca=@p1,precio=@p2,tipo=@p3 where id=@p4";
 2_  adap.UpdateCommand = new SqlCommand(comando,con);
 3_  Adap.UpdateCommand.Parameters.Add("@p1",SqlDbType.Tipo,caracteres,"nombre_columna");
 
