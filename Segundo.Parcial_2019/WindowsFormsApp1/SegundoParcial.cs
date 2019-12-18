@@ -280,9 +280,9 @@ namespace SP
                 comando.CommandType = CommandType.Text;
                 StringBuilder unosComandos = new StringBuilder();
 
-                unosComandos.AppendLine("insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._manzana.Nombre + "', " + 12.9 + ", " + frm._manzana.Peso + ")");
-                unosComandos.AppendLine("insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._banana.Nombre + "', " + 13.6 + ", " + frm._banana.Peso + ")");
-                unosComandos.AppendLine("insert into [sp_lab_II].[dbo].[frutas]  values ('" + frm._durazno.Nombre + "', " + 14.8 + ", " + frm._durazno.Peso + ")");
+                unosComandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture,"insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._manzana.Nombre + "', " + 12.9 + ", " + frm._manzana.Peso + ")\n");
+                unosComandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "insert into [sp_lab_II].[dbo].[frutas] values ('" + frm._banana.Nombre + "', " + 13.6 + ", " + frm._banana.Peso + ")\n");
+                unosComandos.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "insert into [sp_lab_II].[dbo].[frutas]  values ('" + frm._durazno.Nombre + "', " + 14.8 + ", " + frm._durazno.Peso + ")\n");
 
                 comando.CommandText = unosComandos.ToString();
 

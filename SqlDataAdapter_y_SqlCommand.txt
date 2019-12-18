@@ -20,52 +20,27 @@
 			//Sincronizar el SqlDataAdapter con la BD
 						this.DataAdapter.Update(this.DataTable);
 
+
+
 ///SqlCommand
-///Delete		
-		using(SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
-		{
-			try
-			{
-				connection.Open();
-				using(SqlCommand command = new SqlCommand("DELETE FROM "NombreTabla" WHERE id=" + id, connection))
-				{
-					command.ExecuteNonQuery();
-				}
-			}
-			catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-		}
-///Insert
-		using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
+----------------------------------------------------------------------------
+Select
+----------------------------------------------------------------------------
+
+	    ///Adaptar el reader para la situacion
+	    string retorno = "";
+	    using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(string.Format("INSERT INTO "NombreTabla" ("Columnas")VALUES("Variables")", "Variables", Variables), connection))
-				{
-                        command.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-///Select
-		///Adaptar el reader para la situacion
-		using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
-            {
-                try
-                {
-                    connection.Open();
-                using (SqlCommand command = new SqlCommand("select * from frutas", connection))
-				{
+                    using (SqlCommand command = new SqlCommand("select * from "nombre-de-tabla, connection))
+		    {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read() != false)
-                            {                             
+                            {
+         			retorno += String.Format("{0} {1} {2}\n", reader["nombre"].ToString(), reader["peso"].ToString(), reader["precio"].ToString());
                             }
                         }
                     }
@@ -75,44 +50,89 @@
                     MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-///Update
-		using(SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
+
+----------------------------------------------------------------------------
+Insert
+----------------------------------------------------------------------------
+
+	using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
+        {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(string.Format("INSERT INTO "NombreTabla" ("Columnas")VALUES("Variables")", "Variables", Variables), connection))
+		    {
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+        }
+
+----------------------------------------------------------------------------
+Update
+----------------------------------------------------------------------------
+
+	using(SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
+	{
+		try
 		{
-			try
+			connection.Open();
+			using(SqlCommand command = new SqlCommand("update "NombreTabla" set "columna" = "Variable", "columna" = "Variable" where id = "ID"", connection))
 			{
-				connection.Open();
-				using(SqlCommand command = new SqlCommand("update "NombreTabla" set "columna" = "Variable", "columna" = "Variable" where id = "ID"", connection))
-				{
-					command.ExecuteNonQuery();
-				}
+				command.ExecuteNonQuery();
 			}
-			catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 		}
+		catch (Exception error)
+            	{
+               		MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            	}
+	}
 
+----------------------------------------------------------------------------
+Delete		
+----------------------------------------------------------------------------
 
-///Caso particular del Segundo parcial
-		StringBuilder comandoTexto = new StringBuilder();
-		
-		comandoTexto.AppendLine("INSERT INTO "NombreTabla" ("Columnas")VALUES("Variables")","Variables");
-        comandoTexto.AppendLine("INSERT INTO "NombreTabla" ("Columnas")VALUES("Variables")","Variables");
-        comandoTexto.AppendLine("INSERT INTO "NombreTabla" ("Columnas")VALUES("Variables")","Variables");
-
-		using(SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
+	using(SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
+	{
+		try
 		{
-			try
+			connection.Open();
+			using(SqlCommand command = new SqlCommand("DELETE FROM "NombreTabla" WHERE id=" + id, connection))
 			{
-				cn.open();
-				using(SqlCommand command = new SqlCommand(comandoTexto), connection))
-				{
-					command.ExecuteNonQuery();
-				}
+				command.ExecuteNonQuery();
 			}
-			catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 		}
+		catch (Exception error)
+            	{
+                	MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            	}
+	}
+
+----------------------------------------------------------------------------
+Caso particular del Segundo parcial
+----------------------------------------------------------------------------
+
+	StringBuilder comandoTexto = new StringBuilder();
+	comandoTexto.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "INSERT INTO frutas ("NombreDeTablas")VALUES('{0}',{1},{2})\n", _manzana.Nombre, _manzana.Peso, 23);
+        comandoTexto.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "INSERT INTO frutas ("NombreDeTablas")VALUES('{0}',{1},{2})\n", _banana.Nombre, _banana.Peso, 23);
+        comandoTexto.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "INSERT INTO frutas ("NombreDeTablas")VALUES('{0}',{1},{2})\n", _durazno.Nombre, _durazno.Peso, 23);
+
+	using(SqlConnection connection = new SqlConnection(Properties.Settings.Default.Conexion))
+	{
+		try
+		{
+			cn.open();
+			using(SqlCommand command = new SqlCommand(comandoTexto), connection))
+			{
+				command.ExecuteNonQuery();
+			}
+		}
+		catch (Exception error)
+            	{
+               		MessageBox.Show(error.Message, "Error al eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            	}
+	}
 	

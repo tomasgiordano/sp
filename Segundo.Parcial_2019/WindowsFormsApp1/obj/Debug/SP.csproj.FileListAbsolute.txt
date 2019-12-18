@@ -34,3 +34,4 @@ C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debu
 C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.csproj.CopyComplete
 C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.exe
 C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\obj\Debug\SP.pdb
+C:\Users\pc\Desktop\2DO CUATRI\sp\Segundo.Parcial_2019\WindowsFormsApp1\bin\Debug\Entidades.SP.dll.config
